@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Corner of Mine 🌙</title>
+
+    <!-- Social Media Preview -->
+    <meta property="og:title" content="A Little Corner of Mine 🌙">
+    <meta property="og:description" content="Just sharing little moments, things I enjoy, and a few interesting discoveries. ✨">
+    <meta property="og:image" content="https://raw.githubusercontent.com/hi-link25/image/refs/heads/main/misel.jpg">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:url" content="https://n-chat.biz.id/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter / Threads Preview -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A Little Corner of Mine 🌙">
+    <meta name="twitter:description" content="Just sharing little moments, things I enjoy, and a few interesting discoveries. ✨">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/hi-link25/image/refs/heads/main/misel.jpg">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: #171310;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* =========================
+           VIDEO BACKGROUND
+        ========================= */
+
+        .video-background {
+            position: fixed;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            z-index: -3;
+
+            background: #171310;
+        }
+
+        /* =========================
+           DARK OVERLAY
+        ========================= */
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(12, 9, 7, 0.40) 0%,
+                    rgba(12, 9, 7, 0.56) 50%,
+                    rgba(12, 9, 7, 0.76) 100%
+                );
+
+            z-index: -2;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .container {
+            position: relative;
+
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 30px 20px;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 700px;
+
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        /* =========================
+           SMALL TITLE
+        ========================= */
+
+        .eyebrow {
+            display: inline-block;
+
+            margin-bottom: 18px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        /* =========================
+           MAIN TITLE
+        ========================= */
+
+        h1 {
+            margin: 0 0 18px;
+
+            font-size: clamp(2.3rem, 6vw, 4rem);
+
+            line-height: 1.08;
+
+            font-weight: 700;
+
+            letter-spacing: -1.5px;
+
+            text-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.40);
+        }
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        .description {
+            max-width: 580px;
+
+            margin: 0 auto 32px;
+
+            font-size: clamp(1rem, 2.5vw, 1.18rem);
+
+            line-height: 1.7;
+
+            color: rgba(255, 255, 255, 0.88);
+
+            text-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.30);
+        }
+
+        /* =========================
+           CTA BUTTON
+        ========================= */
+
+        .cta-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            min-width: 190px;
+
+            padding: 16px 34px;
+
+            background: #ff5e57;
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            border-radius: 999px;
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.30),
+                0 5px 15px rgba(255, 94, 87, 0.25);
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .cta-arrow {
+            font-size: 20px;
+
+            transition:
+                transform 0.25s ease;
+        }
+
+        .cta-button:hover {
+            background: #ff4b43;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 16px 38px rgba(0, 0, 0, 0.35),
+                0 7px 20px rgba(255, 94, 87, 0.30);
+        }
+
+        .cta-button:hover .cta-arrow {
+            transform: translateX(5px);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        /* =========================
+           SMALL NOTE
+        ========================= */
+
+        .note {
+            margin-top: 18px;
+
+            font-size: 12px;
+
+            color: rgba(255, 255, 255, 0.55);
+
+            letter-spacing: 0.2px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            position: absolute;
+
+            bottom: 18px;
+
+            left: 0;
+
+            width: 100%;
+
+            text-align: center;
+
+            font-size: 11px;
+
+            color: rgba(255, 255, 255, 0.42);
+        }
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding:
+                    25px 18px 60px;
+            }
+
+            .eyebrow {
+                font-size: 11px;
+
+                letter-spacing: 2px;
+
+                margin-bottom: 14px;
+            }
+
+            h1 {
+                font-size: 2.25rem;
+
+                letter-spacing: -1px;
+            }
+
+            .description {
+                font-size: 0.98rem;
+
+                line-height: 1.6;
+
+                margin-bottom: 27px;
+            }
+
+            .cta-button {
+                width: min(90%, 280px);
+
+                padding: 15px 25px;
+
+                font-size: 16px;
+            }
+
+            .note {
+                font-size: 11px;
+            }
+
+            .footer {
+                bottom: 12px;
+
+                font-size: 10px;
+            }
+
+        }
+
+        /* =========================
+           REDUCE MOTION
+        ========================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .content {
+                animation: none;
+            }
+
+            .cta-button,
+            .cta-arrow {
+                transition: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         VIDEO BACKGROUND
+
+         GANTI VIDEO DI BAGIAN src
+         JIKA KAMU SUDAH PUNYA VIDEO SENDIRI
+    ================================== -->
+
+<video
+    class="video-background"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+>
+    <source src="36.mp4" type="video/mp4">
+</video>
+
+    <!-- DARK OVERLAY -->
+
+    <div class="overlay"></div>
+
+
+    <!-- =================================
+         MAIN CONTENT
+    ================================== -->
+
+    <main class="container">
+
+        <div class="content">
+
+
+            <div class="eyebrow">
+                A little something from me
+            </div>
+
+
+            <h1>
+                A Little Corner of Mine
+            </h1>
+
+
+            <p class="description">
+                Just sharing little moments,
+                things I enjoy,
+                and a few interesting discoveries. 🌙✨
+            </p>
+
+
+            <!-- =================================
+                 LOSPOLLOS SMARTLINK
+            ================================== -->
+
+            <a
+                href="https://demalz.daillyconnects.com/?utm_source=da57dc555e50572d&ban=inst&j1=1&s1=252812&s2=2288796&s3=BERKAH_LEADS&click_id=BERKAH_ABADI"
+                class="cta-button"
+            >
+
+                Take a Look
+
+                <span class="cta-arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <div class="note">
+                Take a moment and have a look around.
+            </div>
+
+
+        </div>
+
+
+        <div class="footer">
+            © 2026 A Little Corner of Mine
+        </div>
+
+
+    </main>
+
+
+</body>
+</html>
